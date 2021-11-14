@@ -1,0 +1,7 @@
+#!/bin/bash
+
+(cd ..; cd Files; wget https://k8s.io/examples/application/wordpress/wordpress-deployment.yaml https://k8s.io/examples/application/wordpress/mysql-deployment.yaml)
+(cd Scripts; ./makeSecret)
+(cd Scripts; ./addDepFiles)
+(cd Scripts; mv kustomization.yaml ../Files)
+kubectl get pvc && echo MySQL PV Successfully Created || echo MySQL PV Was Not Created  

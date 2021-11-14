@@ -1,0 +1,35 @@
+#!/bin/bash
+
+
+#Start of UI
+
+echo Welcome to JumpStart, you are minutes away from having a full network setup.
+
+echo First we need you to choose from a few options
+
+
+cIN='Please enter your choice: '
+options=("Install All Services" "Custom Install" "Exit")
+select opt in "${options[@]}"
+do
+	case $opt in
+		"Install All Services")
+			echo You Chose Install All Services 
+			bash Scripts/fullInstall
+
+			break #end 
+			;;
+		"Custom Install")
+			echo You Chose Custom Install #REPLACE THIS WITH DOING SHIT
+			bash Scripts/customInstall
+
+
+			break #end 
+			;;
+		"Exit")
+			break
+			;;
+		*) echo "Invalid Option";;
+	esac
+done
+
