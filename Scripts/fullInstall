@@ -4,12 +4,12 @@ read -p "This will install and configure Wordpress, MySQL, and GitLab. Proceed?"
 case ${answer:0:1} in
     y|Y ) 
 	bash Scripts/wpInstall
-	bash Scripts/mySQLInstall
+	bash Scripts/mysqlInstall
 	echo "Unfortuantely GitLab is not available at this time" #bash Scripts/gitLabInstall
-	break 
+	 
 	;;
     n|N )
-        break
+        
     ;;
 
     * ) echo "Sorry, that's not a valid input"
