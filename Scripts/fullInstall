@@ -1,16 +1,10 @@
 #!/bin/bash
 
-
-#Have to use a function to cd into the right direcotry bc wget writes to STDOUT by default and cannot DL to a specific directory
-wgetHack() {
-        ( cd /dlFiles; wget https://k8s.io/examples/application/wordpress/mysql-deployment.yaml https://k8s.io/examples/application/wordpress/mysql-deployment.yaml)
-}
-
-
 read -p "This will install and configure Wordpress, MySQL, and GitLab. Proceed?" answer
 case ${answer:0:1} in
     y|Y ) 
-	bash Scripts/mysqlInstall
+	bash Scripts/wpInstall
+	#UNCOMMENT WHEN READY bash Scripts/mySQLInstall
 	;;
     * )
         echo No

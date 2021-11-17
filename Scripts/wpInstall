@@ -1,0 +1,9 @@
+#!/bin/bash
+(cd Scripts; ./makeSecret)
+(cd Scripts; ./addDepFiles)
+(cd Scripts; mv kustomization.yaml ../Files)
+(cd Files; kubectl apply -k ./)
+
+kubectl rollout status deployment wordpress
+echo "Your Wordpress Instance can be accessed at"
+minikube service wordpress --url
