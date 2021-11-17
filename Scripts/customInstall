@@ -13,6 +13,12 @@ echo "You have chosen custom installation. Choose which services to install"
 			[Nn]*) echo "You chose no" ;;
 		esac
 
+		read -p "$* Install GitLab? [y/n]: " yn3
+		case $yn3 in
+			[Yy]*) echo "Sorry, GitLab integration is still in development" #bash Scripts/gitLabInstall
+		esac
+
+		break
 	done
 
 

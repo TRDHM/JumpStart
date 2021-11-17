@@ -5,7 +5,6 @@
 (cd Files; kubectl apply -k ./)
 
 kubectl rollout status deployment wordpress
-minikube tunnel&
 echo "Your Wordpress Instance can be accessed at"
 minikube service wordpress --url
 
