@@ -1,5 +1,5 @@
 #!/bin/bash
-cat <<EOF >>./kustomization.yaml
+cat <<EOF >>./../Fileskustomization.yaml
 resources:
   - mysql-deployment.yaml
   - wordpress-deployment.yaml

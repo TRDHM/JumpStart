@@ -7,7 +7,50 @@ echo "
 
 "
 
-cat <<EOF >./sqlsolo.yaml
+cat <<EOF >./../FilessSQLSecret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-secret
+type: kubernetes.io/basic-auth
+stringData:
+  password:$pw 
+EOF
+
+(cd Files; kubectl apply -f sSQLSecret.yaml)
+
+cat<<EOF >./../FilessqlsoloMem.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-solo-volume
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-solo-claim
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+EOF
+
+(cd Files; kubectl apply -f sqlsoloMem.yaml)
+
+cat <<EOF >./../Filessqlsolo.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -41,7 +84,7 @@ spec:
       volumes:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
-          claimName: mysql-pv-claim
+          claimName: mysql-solo-claim
 ---
 apiVersion: v1
 kind: Service

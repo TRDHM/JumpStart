@@ -21,7 +21,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: mysql-secret
-              key: gzzSc53Gro+k5R4
+              key: iQkeVI43lD03R6L
         ports:
         - containerPort: 3306
           name: mysql
